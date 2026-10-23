@@ -107,11 +107,11 @@ if (galleryTrack) {
 }
 
 const copyHashButton = document.querySelector(".copy-hash");
-const installerHash = document.querySelector("#installer-hash");
+const appHash = document.querySelector("#app-hash");
 const copyStatus = document.querySelector("#copy-status");
 
 copyHashButton.addEventListener("click", async () => {
-  const hash = installerHash.textContent.trim();
+  const hash = appHash.textContent.trim();
 
   try {
     await navigator.clipboard.writeText(hash);
@@ -119,7 +119,7 @@ copyHashButton.addEventListener("click", async () => {
   } catch (error) {
     const selection = window.getSelection();
     const range = document.createRange();
-    range.selectNodeContents(installerHash);
+    range.selectNodeContents(appHash);
     selection.removeAllRanges();
     selection.addRange(range);
     const copied = document.execCommand("copy");
